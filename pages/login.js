@@ -6,16 +6,19 @@ export default class extends React.Component {
   static getInitialProps(context) {
     console.info("Login getInitialProps: context ", context);
     redirectIfAuth(context);
-
-    return{};
+    return {};
   }
 
   state = {
-    nombre: ""
+    nombre: "test@test.com",
+    pass: "1234",
+    error: ""
   };
 
-  enviar(email){
-    signIn(email,"1234")
+  enviar(email, pass) {
+    const error = signIn(email, pass).then(res => {
+      if (res) this.setState({ error: res });
+    });
   }
 
   render() {
@@ -31,13 +34,23 @@ export default class extends React.Component {
             onChange={e => this.setState({ nombre: e.target.value })}
           />
           <br />
-          <input type="password" placeholder="Password" />
+          <input
+            type="password"
+            placeholder="Password"
+            name="pass"
+            value={this.state.pass}
+            onChange={e => this.setState({ pass: e.target.value })}
+          />
           <br />
-          <button onClick={e => this.enviar(this.state.nombre)}>
+          <button
+            onClick={e => this.enviar(this.state.nombre, this.state.pass)}
+          >
             {" "}
             Ingresar{" "}
           </button>
+          <div> { this.state.error } </div>
         </div>
+
         <style jsx>{`
           .login {
             background-color: rgb(100, 100, 250);
