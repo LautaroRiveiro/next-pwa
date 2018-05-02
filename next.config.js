@@ -1,3 +1,4 @@
+/*
 const NextWorkboxWebpackPlugin = require('./plugins/next-workbox-webpack-plugin/index')
 
 module.exports = {
@@ -17,3 +18,4 @@ module.exports = {
     }
   }
 }
+*/
