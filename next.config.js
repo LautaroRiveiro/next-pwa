@@ -1,21 +1,11 @@
-/*
-const NextWorkboxWebpackPlugin = require('./plugins/next-workbox-webpack-plugin/index')
+const withWorkbox = require('next-workbox')
+const withManifest = require('next-manifest')
 
-module.exports = {
-  webpack: (config, {isServer, dev, buildId, config: {distDir}}) => {
-    if (!isServer && !dev) {
-      config.plugins.push(new NextWorkboxWebpackPlugin({
-        distDir,
-        buildId
-      }))
+module.exports = withWorkbox(withManifest({
+    manifest: {
+        icons: {
+            src: './assets/icon-512x512.png',
+            cache: true
+        }
     }
-
-    return config
-  },
-  exportPathMap: () => {
-    return {
-      '/': { page: '/' }
-    }
-  }
-}
-*/
+}))

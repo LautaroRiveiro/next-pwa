@@ -4,19 +4,26 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@material-ui/icons": "^1.0.0-beta.43",
+    "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "material-ui": "^1.0.0-beta.44",
+    "@material-ui/icons": "^1.0.0-beta.43",
     "next": "^5.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "next-manifest": "^1.5.0",
+    "next-workbox": "^1.4.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "lint": "xo",
+    "dev": "NODE_ENV=development node server.js",
     "build": "next build",
-    "start": "node next-workbox-start --port=8080"
+    "clean": "rm -rf ./static/workbox ./static/manifest .next",
+    "start": "NODE_ENV=production node server.js",
+    "deploy": "now --name=next-hnpwa --public",
+    "remove": "now rm next-hnpwa --safe"
   },
   "keywords": [],
   "author": "",
