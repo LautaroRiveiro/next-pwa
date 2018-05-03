@@ -25,6 +25,7 @@ const defaultConfig = {
   uniqueId: false
 }
 
+
 class NextWorkboxWebpackPlugin {
   constructor(config) {
     const {
@@ -79,6 +80,9 @@ class NextWorkboxWebpackPlugin {
   }
 
   globPrecacheManifest({distDir, buildId}) {
+
+    console.log("***************")
+
     const precacheQuery = [{
       src: `${distDir}/bundles/pages`,
       route: f => `/_next/${buildId}/page/${f}`,
@@ -91,7 +95,14 @@ class NextWorkboxWebpackPlugin {
       src: `${distDir}`,
       route: f => `/_next/${md5File(`${distDir}/app.js`)}/app.js`,
       filter: f => f === 'app.js'
-    }]
+    }, {
+		src: `${distDir}/../static`,
+		route: f => `/static/${f}`,
+		filter: f => {
+			console.log(`${f} -> ${f !== "workbox" && f !== "manifest"}`)
+			return !f.endsWith("workbox") && !f.endsWith("manifest")
+		}
+	}]
 
     return Promise.all(precacheQuery.map(query => {
       return new Promise(resolve => {

@@ -1,0 +1,33 @@
+{
+	"name": "next-workbox",
+	"version": "1.4.1",
+	"description": "Next.js plugins for workbox and PWA",
+	"license": "MIT",
+	"repository": "ragingwind/next-workbox",
+	"author": {
+		"name": "Jimmy Moon",
+		"email": "ragingwind@gmail.com",
+		"url": "https://ragingwind.me"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {},
+	"files": [
+		"index.js",
+		"service-worker-register.js",
+		"service-worker.js"
+	],
+	"keywords": [
+		"next",
+		"next-workbox",
+		"workbox",
+		"pwa",
+		"progressive web app",
+		"next-plugins"
+	],
+	"dependencies": {
+		"find-cache-dir": "^1.0.0",
+		"next-workbox-webpack-plugin": "1.1.0"
+	}
+}
