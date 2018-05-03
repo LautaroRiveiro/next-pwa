@@ -1,12 +1,18 @@
 import Head from "../components/Head";
 import Link from "next/link";
 import { redirectIfNotAuth } from "../lib/auth";
+import 'isomorphic-fetch'
 
 export default class extends React.Component {
     static async getInitialProps(context) {
         console.info("Resultados - getInitialProps: context ", context);
         redirectIfNotAuth(context);
-        return {};
+
+        //const req = await fetch("/static/data.json")
+        const req = await fetch("http://www.mocky.io/v2/5aeb5d5730000062005754dc")
+        const turnos = await req.json()
+        console.info("turnos", turnos);
+        return { turnos: turnos.resultados };
     }
 
   render() {
@@ -33,7 +39,7 @@ export default class extends React.Component {
                     <table
                       id="table-despachos-busqueda"
                       className="display table table-striped dataTable no-footer"
-                      cellspacing="0"
+                      cellSpacing="0"
                       width="100%"
                       role="grid"
                       style={{width: "100%", backgroundColor: "rgba(255,255,255,0.7)", padding:"10px"}}
@@ -41,60 +47,60 @@ export default class extends React.Component {
                       <thead>
                         <tr role="row">
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Cond: activate to sort column ascending"
                             style={{width: "55.3333px"}}
                           >
                             Cond
                           </th>
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Remito: activate to sort column ascending"
                             style={{width: "46.6667px"}}
                           >
                             Remito
                           </th>
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Razón Social: activate to sort column ascending"
                             style={{width: "150px"}}
                           >
                             Razón Social
                           </th>
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Producto: activate to sort column ascending"
                             style={{width: "156px"}}
                           >
                             Producto
                           </th>
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Cantidad: activate to sort column ascending"
                             style={{width: "50.6667px"}}
                           >
                             Cantidad
                           </th>
                           <th
-                            tabindex="0"
+                            tabIndex="0"
                             aria-controls="table-despachos-busqueda"
-                            rowspan="1"
-                            colspan="1"
+                            rowSpan="1"
+                            colSpan="1"
                             aria-label="Destino: activate to sort column ascending"
                             style={{width: "126px"}}
                           >
@@ -103,116 +109,22 @@ export default class extends React.Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr role="row" className="odd" data-despacho-idx="0">
-                          <td className="border-right">
-                            <span className="square-env bg-red">CIF</span>
-                          </td>
-                          <td>0011R00000003</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPF40 IRAM 50000 GR</td>
-                          <td className="align-right strong">300,00</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                        </tr>
-                        <tr role="row" className="even" data-despacho-idx="1">
-                          <td className="border-right">
-                            <span className="square-env bg-red">CIF</span>
-                          </td>
-                          <td>0011R00000004</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPF40 IRAM 50000 GR</td>
-                          <td className="align-right strong">100,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="odd" data-despacho-idx="2">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000138</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPF40 IRAM 50000 B50 KG</td>
-                          <td className="align-right strong">8,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="even" data-despacho-idx="3">
-                          <td className="border-right">
-                            <span className="square-env bg-red">CIF</span>
-                          </td>
-                          <td>0002R00000124</td>
-                          <td>Construcciones Majestic S.A.</td>
-                          <td>CEMENTO CPF40 IRAM 50000 B50 KG</td>
-                          <td className="align-right strong">0,05</td>
-                          <td>Construcciones Majestic S.A.</td>
-                        </tr>
-                        <tr role="row" className="odd" data-despacho-idx="4">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000130</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CAL HIDRAT EXTRA B25 KG</td>
-                          <td className="align-right strong">6,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="odd" data-despacho-idx="10">
-                          <td className="border-right">
-                            <span className="square-env bg-red">CIF</span>
-                          </td>
-                          <td>0002R00000328</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPN40 (ARS) IRAM 50001 GR</td>
-                          <td className="align-right strong">30,00</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                        </tr>
-                        <tr role="row" className="even" data-despacho-idx="15">
-                          <td className="border-right">
-                            <span className="square-env bg-red">CIF</span>
-                          </td>
-                          <td>0076R00000001</td>
-                          <td>Prueba Despacho 1</td>
-                          <td>CEMENTO ALBAÑILERIA IRAM 1685 B40 KG</td>
-                          <td className="align-right strong">2,00</td>
-                          <td>Prueba Despacho 1</td>
-                        </tr>
-                        <tr role="row" className="odd" data-despacho-idx="16">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000279</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPF40 IRAM 50000 B50 KG</td>
-                          <td className="align-right strong">4,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="even" data-despacho-idx="17">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000279</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CAL HIDRAT EXTRA B25 KG</td>
-                          <td className="align-right strong">6,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="odd" data-despacho-idx="18">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000278</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CEMENTO CPF40 IRAM 50000 B50 KG</td>
-                          <td className="align-right strong">2,00</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
-                        <tr role="row" className="even" data-despacho-idx="19">
-                          <td className="border-right">
-                            <span className="square-env bg-red">FOB</span>
-                          </td>
-                          <td>0002R00000278</td>
-                          <td>CORTI ANDREA Y CORTI DILLMAN Mº CEC</td>
-                          <td>CAL HIDRAT EXTRA B25 KG</td>
-                          <td className="align-right strong">4,50</td>
-                          <td>Destinatario 1 para cliente 1</td>
-                        </tr>
+
+                        {
+                          this.props.turnos.map((turno, index)=>(
+                            <tr role="row" className="odd" data-despacho-idx="0" key={index}>
+                              <td className="border-right">
+                                <span className="square-env bg-red">{ turno.cond }</span>
+                              </td>
+                              <td>{ turno.remito }</td>
+                              <td>{ turno.razonSocial }</td>
+                              <td>{ turno.producto }</td>
+                              <td className="align-right strong">{ turno.cantidad }</td>
+                              <td>{ turno.destino }</td>
+                            </tr>
+                          ))
+                        }
+
                       </tbody>
                     </table>
                   </div>

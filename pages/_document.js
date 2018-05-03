@@ -20,7 +20,7 @@ export default class extends Document {
             <Head>
                 <link rel="icon" href="/static/favicon.ico"/>
                 <title>PWA with Next.js</title>
-                <Manifest themeColor='#000000'/>
+                <Manifest themeColor='#d0021b'/>
             </Head>
             <body>
             <Main/>

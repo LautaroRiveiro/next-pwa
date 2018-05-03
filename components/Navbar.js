@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import {removeCookie} from '../lib/session';
+import Router from 'next/router';
 import Drawer from "material-ui/Drawer";
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
