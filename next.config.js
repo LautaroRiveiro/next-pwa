@@ -30,7 +30,18 @@ module.exports = withWorkbox(withManifest({
     workbox: {
         runtimeCaching: [{
             urlPattern: /^http[s|]?.*/,
-            handler: 'staleWhileRevalidate'
+            handler: 'networkFirst'
         }]
     }
-}))
+})),
+{
+    webpack: (config) => {
+      // Remove minifed react aliases for material-ui so production builds work
+      if (config.resolve.alias) {
+        delete config.resolve.alias.react
+        delete config.resolve.alias['react-dom']
+      }
+  
+      return config
+    }
+  }

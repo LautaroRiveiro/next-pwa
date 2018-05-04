@@ -1,35 +1,54 @@
-import Link from 'next/link';
-import {removeCookie} from '../lib/session';
-import Router from 'next/router';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
 import Drawer from "material-ui/Drawer";
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import MenuIcon from '@material-ui/icons/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import StarIcon from '@material-ui/icons/Star';
 import SendIcon from '@material-ui/icons/Send';
 import DraftsIcon from '@material-ui/icons/Drafts';
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from 'material-ui/IconButton';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 
-export default class extends React.Component{
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+class ButtonAppBar extends React.Component{
+
   state = {
-    open: false
-  }
+      open: false
+    }
 
   render(){
-    return(
-      <div>
-        <div className="header">
-          <IconButton color="inherit" onClick={ () => this.setState({open:true}) }>
-            <MenuIcon />
-          </IconButton>
-          <h2>{ this.props.titulo }</h2>
-          <a href="/" onClick={ () => {removeCookie("jwt"); Router.reload();} }>
-          < KeyboardArrowLeft/>
-          <span>   Salir</span> 
-          </a>
-        </div>
-        <hr />
+    const { classes, titulo, boton, botonIcono, onclick } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={ () => this.setState({open:true}) }>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              { titulo }
+            </Typography>
+            <Button color="inherit" onClick={ () => onclick() }>{ boton }</Button>
+          </Toolbar>
+        </AppBar>
+
         <Drawer open={this.state.open} onClose={ () => this.setState({open:false}) }>
           <div>
             <ListItem button>
@@ -58,32 +77,13 @@ export default class extends React.Component{
             </ListItem>
           </div>
         </Drawer>
-
-        <style jsx>{`
-          .header {
-            margin: 0;
-            padding: 5px;
-            color: white
-            background: url('./static/bg-red.jpg');
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-          .header h2{
-            margin: 0;
-            padding: 5px;
-            color: white
-          }
-          .header a{
-            margin: 0;
-            padding: 5px;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-          }
-        `}
-        </style>
       </div>
     )
   }
 }
+
+ButtonAppBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ButtonAppBar);

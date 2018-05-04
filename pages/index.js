@@ -1,7 +1,9 @@
-import {redirectIfNotAuth} from "../lib/auth";
-import Head from "../components/Head";
-import Navbar from "../components/Navbar";
 import Router from "next/router";
+import {redirectIfNotAuth} from "../lib/auth";
+import banner from "../lib/install";
+import {removeCookie} from "../lib/session";
+import Head from "../components/Head";
+import Appbar from "../components/Appbar";
 
 export default class extends React.Component {
 
@@ -23,16 +25,10 @@ export default class extends React.Component {
     }
 
     componentDidMount() {
-        // if ("serviceWorker" in navigator) {
-        //     navigator.serviceWorker
-        //         .register("/sw.js")
-        //         .then(registration => {
-        //             console.log("service worker registration successful");
-        //         })
-        //         .catch(err => {
-        //             console.warn("service worker registration failed", err.message);
-        //         });
-        // }
+        let mostrarBanner = banner();
+        if(mostrarBanner){
+            alert("MOSTRAR BANNER!!")
+        }
     }
 
     filtrar = () => {
@@ -40,13 +36,17 @@ export default class extends React.Component {
         Router.push("/resultados");
     }
 
+    salir = () => {
+        removeCookie("jwt");
+        Router.reload("/");
+    }
+
     render() {
         const {desde, hasta, familia, producto, puntoExpedicion, numero, CIF, FOB} = this.state;
         return (
             <div>
                 <Head titulo="Filtro | eCementos"/>
-
-                <Navbar titulo="Turnos"/>
+                <Appbar titulo="Turnos" boton="SALIR" onclick={ () => this.salir()}/>
 
                 <div className="filtros filters filter-despachos ng-scope" id="filtro-turnos">
 
@@ -180,7 +180,7 @@ export default class extends React.Component {
                   body {
                     background: url("./static/bg-red.jpg");
                     margin: 0;
-                    padding: 10px;
+                    padding: 0px;
                   }
                 `}</style>
 
@@ -191,30 +191,10 @@ export default class extends React.Component {
                     justify-content: flex-start;
                     align-items: flex-start;
                     padding: 10px;
+                    margin-top: 20px;
                   }
                   .filtros>div{
                     margin:10px;
-                  }
-                  .header {
-                    margin: 0;
-                    padding: 5px;
-                    color: white
-                    background: url('./static/bg-red.jpg');
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                  }
-                  .header h2{
-                    margin: 0;
-                    padding: 5px;
-                    color: white
-                  }
-                  .header a{
-                    margin: 0;
-                    padding: 5px;
-                    color: white;
-                    text-decoration: none;
-                    font-size: 16px;
                   }
                 `}</style>
             </div>
