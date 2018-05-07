@@ -2619,9 +2619,9 @@ button.close:focus, button.close:active {
 /* Filters */
 
 .filters {
-  background: url(./bg-red-02.jpg) no-repeat left top;
-  background-size: cover;
-  font-size:.928571em;
+  /* background: url(./bg-red-02.jpg) no-repeat left top;
+  background-size: cover; */
+  font-size:1.3em;
 }
 
 .filters .bg {
@@ -6832,8 +6832,8 @@ span.loading {
   }
 
   .filters {
-    background: url(./bg-red-02.jpg) no-repeat left top;
-    background-size: cover
+    /* background: url(./bg-red-02.jpg) no-repeat left top; 
+    background-size: cover */
   }
 
   .pedidos .main-header.expanded.cliente-detalle.alt-bg {

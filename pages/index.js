@@ -1,9 +1,10 @@
 import Router from "next/router";
 import {redirectIfNotAuth} from "../lib/auth";
-import banner from "../lib/install";
 import {removeCookie} from "../lib/session";
 import Head from "../components/Head";
 import Appbar from "../components/Appbar";
+import BannerInstalacion from "../components/BannerInstalacion";
+
 
 export default class extends React.Component {
 
@@ -12,7 +13,7 @@ export default class extends React.Component {
         redirectIfNotAuth(context);
         return {};
     }
-
+    
     state = {
         desde: "",
         hasta: "",
@@ -23,12 +24,7 @@ export default class extends React.Component {
         CIF: false,
         FOB: false
     }
-
     componentDidMount() {
-        let mostrarBanner = banner();
-        if(mostrarBanner){
-            alert("MOSTRAR BANNER!!")
-        }
     }
 
     filtrar = () => {
@@ -47,7 +43,7 @@ export default class extends React.Component {
             <div>
                 <Head titulo="Filtro | eCementos"/>
                 <Appbar titulo="Turnos" boton="SALIR" onclick={ () => this.salir()}/>
-
+                <BannerInstalacion/>
                 <div className="filtros filters filter-despachos ng-scope" id="filtro-turnos">
 
                     <div className="campo">
@@ -60,7 +56,6 @@ export default class extends React.Component {
                             onChange={e => this.setState({desde: e.target.value})}
                             value={desde}/>
                     </div>
-
                     <div className="campo">
                         <input
                             type="text"
