@@ -25,8 +25,9 @@ export default class extends Document {
             <body>
             <Main/>
             <NextScript/>
-            <ServiceWorker src={'/static/workbox/sw.js'} scope={'../../'} unregister={isDev}/>
-            
+            {//<ServiceWorker src={'/static/workbox/sw.js'} scope={'../../'} unregister={isDev}/>
+        }
+            <ServiceWorker src={'/static/OneSignalSDKWorker.js'} scope={'../'} unregister={isDev}/>
             <style jsx global>{`
                   body {
                     overscroll-behavior-y: contain;

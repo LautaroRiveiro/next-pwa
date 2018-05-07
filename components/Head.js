@@ -10,6 +10,7 @@ export default (props) => (
             <link href="./static/maquetas.css" rel="stylesheet"/>   
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+            <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         </Head>
     </div>
 )

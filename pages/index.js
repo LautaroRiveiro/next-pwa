@@ -25,6 +25,16 @@ export default class extends React.Component {
         FOB: false
     }
     componentDidMount() {
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+              appId: "e61b92cd-9983-4e1e-9af2-970376ba5459",
+              autoRegister: false,
+              notifyButton: {
+                enable: true,
+              },
+            });
+          });
     }
 
     filtrar = () => {

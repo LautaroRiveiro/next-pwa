@@ -26,12 +26,15 @@ module.exports = withWorkbox(withManifest({
               "type": "image/png"
             }
           ],
+          gcm_sender_id: "482941778795",
+          gcm_sender_id_comment: "Do not change the GCM Sender ID"
     },
     workbox: {
         runtimeCaching: [{
             urlPattern: /^http[s|]?.*/,
             handler: 'networkFirst'
-        }]
+        }],
+        importScripts: ['https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js']
     }
 })),
 {
