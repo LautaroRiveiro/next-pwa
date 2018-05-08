@@ -16,6 +16,9 @@ app.prepare().then(() => {
                 res.setHeader('Service-Worker-Allowed', '/')
             }
             app.serveStatic(req, res, join(root, `.${req.url}`))
+        } else if (req.url.includes('/OneSignalSDKWorker.js')) {
+            res.setHeader('Service-Worker-Allowed', '/')
+            app.serveStatic(req, res, join(root, `/static/OneSignalSDKWorker.js`))
         } else {
             handle(req, res, req.url)
         }

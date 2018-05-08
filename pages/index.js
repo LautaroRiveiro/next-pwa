@@ -33,6 +33,7 @@ export default class extends React.Component {
               notifyButton: {
                 enable: true,
               },
+              path:"/static/"
             });
           });
     }
@@ -44,7 +45,7 @@ export default class extends React.Component {
 
     salir = () => {
         removeCookie("jwt");
-        Router.reload("/");
+        Router.push("/login");
     }
 
     render() {

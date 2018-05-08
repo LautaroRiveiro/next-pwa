@@ -33,8 +33,8 @@ module.exports = withWorkbox(withManifest({
         runtimeCaching: [{
             urlPattern: /^http[s|]?.*/,
             handler: 'networkFirst'
-        }],
-        importScripts: ['https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js']
+        }]//,
+        //importScripts: ['/OneSignalSDKWorker.js?appId=024583b3-6712-4994-9360-56e16fd8695c']
     },
     webpack: (config) => {
         // Remove minifed react aliases for material-ui so production builds work

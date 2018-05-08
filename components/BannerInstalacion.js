@@ -63,13 +63,11 @@ class SimpleSnackbar extends React.Component {
             </div>
           }
           action={[
-            <Link href="https://www.google.com.ar">
-              <a style={{textDecoration:"none"}}>
+              <a style={{textDecoration:"none"}} href="https://www.google.com.ar" target="_blank">
                 <Button key="undo" variant="raised" size="small" color="primary" onClick={this.aceptar}>
                   <span style={{padding:"2px"}}>CÓMO AGREGAR A LA PANTALLA PRINCIPAL</span>
                 </Button>
               </a>
-            </Link>
             ,
             <IconButton
               key="close"
