@@ -28,7 +28,7 @@ export default class extends React.Component {
         var OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
             OneSignal.init({
-              appId: "e61b92cd-9983-4e1e-9af2-970376ba5459",
+              appId: "024583b3-6712-4994-9360-56e16fd8695c",
               autoRegister: false,
               notifyButton: {
                 enable: true,

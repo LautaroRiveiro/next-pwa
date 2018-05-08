@@ -35,16 +35,14 @@ module.exports = withWorkbox(withManifest({
             handler: 'networkFirst'
         }],
         importScripts: ['https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js']
-    }
-})),
-{
+    },
     webpack: (config) => {
-      // Remove minifed react aliases for material-ui so production builds work
-      if (config.resolve.alias) {
-        delete config.resolve.alias.react
-        delete config.resolve.alias['react-dom']
-      }
-  
-      return config
+        // Remove minifed react aliases for material-ui so production builds work
+        if (config.resolve.alias) {
+            delete config.resolve.alias.react
+            delete config.resolve.alias['react-dom']
+        }
+
+        return config
     }
-  }
+}))

@@ -23,16 +23,18 @@ export default class extends Document {
                 <Manifest themeColor='#d0021b'/>
             </Head>
             <body>
-            <Main/>
-            <NextScript/>
-            {//<ServiceWorker src={'/static/workbox/sw.js'} scope={'../../'} unregister={isDev}/>
-        }
-            <ServiceWorker src={'/static/OneSignalSDKWorker.js'} scope={'../'} unregister={isDev}/>
-            <style jsx global>{`
-                  body {
-                    overscroll-behavior-y: contain;
-                  }
-            `}</style>
+                <Main/>
+                <NextScript/>
+
+                {/*<ServiceWorker src={'/static/workbox/sw.js'} scope={'../../'} unregister={isDev}/>*/}
+                <ServiceWorker src={'/static/OneSignalSDKWorker.js'} scope={'../'} unregister={isDev}/>
+
+                <style jsx global>{`
+                      body {
+                        overscroll-behavior-y: contain;
+                      }
+                `}</style>
+
             </body>
             </html>
         )
