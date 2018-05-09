@@ -37,7 +37,7 @@ class ButtonAppBar extends React.Component{
     const { classes, titulo, boton, botonIcono, onclick } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="fixed" color="default">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={ () => this.setState({open:true}) }>
               <MenuIcon />

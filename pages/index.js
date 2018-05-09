@@ -187,6 +187,7 @@ export default class extends React.Component {
                     background: url("./static/bg-red.jpg");
                     margin: 0;
                     padding: 0px;
+                    touch-action: none;
                   }
                 `}</style>
 
@@ -197,6 +198,7 @@ export default class extends React.Component {
                     justify-content: flex-start;
                     align-items: flex-start;
                     padding: 10px;
+                    padding-top:40px;
                     margin-top: 20px;
                   }
                   .filtros>div{

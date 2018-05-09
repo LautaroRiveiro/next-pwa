@@ -78,6 +78,7 @@ export default class extends React.Component {
                   body {
                     background: url('./static/bg-red.jpg');
                     margin: 0;
+                    touch-action: none;
                   }
                 `}</style>
 

@@ -2,7 +2,7 @@ import 'isomorphic-fetch'
 import Router from "next/router";
 import { redirectIfNotAuth } from "../lib/auth";
 import Head from "../components/Head";
-import Appbar from "../components/Appbar";
+import AppbarNav from "../components/AppbarNav";
 import Grid from 'material-ui/Grid';
 import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
@@ -26,15 +26,15 @@ export default class extends React.Component {
   }
 
   onclick = () =>{
-    Router.push("/")
+    Router.back()
   }
 
   render() {
     return (
       <div>
         <Head titulo="Resultados | eCementos" />
-        <Appbar titulo="Resultados" boton="VOLVER" onclick={ () => this.onclick() }/>
-        <section className="contenido ">
+        <AppbarNav titulo="Resultados" boton="VOLVER" onclick={ () => this.onclick() }/>
+        <section className="contenido">
           {
             this.props.turnos.map((turno, index)=>(
 
@@ -110,7 +110,7 @@ export default class extends React.Component {
 
         <style jsx>{`
           .contenido{
-            margin-top: 20px;
+            padding-top: 60px;
           }
           .turno{
             display: flex;
